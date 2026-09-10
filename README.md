@@ -51,6 +51,8 @@ The infrastructure was designed to provide:
                             ▼
                   Static Portfolio Website
 ```
+
+
 ## Request Flow
 ```
 Internet
@@ -66,6 +68,7 @@ Nginx
 Portfolio Website
 ```
 
+
 ## ☁️ Azure Resources
 
 The deployment consisted of the following Azure resources:
@@ -78,6 +81,7 @@ Network Security Group	Controls inbound network traffic
 Public IP Address	Provides external access to the web server
 Ubuntu VM	Hosts the web server
 Nginx	Serves the portfolio website
+
 
 ## 🔐 Security Configuration
 
@@ -103,6 +107,7 @@ No unnecessary inbound application ports were opened.
 
 The VM was deployed inside an Azure Virtual Network and subnet, with the Network Security Group controlling permitted inbound traffic.
 
+
 ## 🌐 Web Server Deployment
 
 Nginx was installed and configured on the Ubuntu virtual machine.
@@ -121,6 +126,7 @@ Testing the website through the VM's public IP
 The website was served from:
 /var/www/html/index.html
 
+
 ## 🧪 Validation & Testing
 
 The deployment was validated at multiple layers.
@@ -133,6 +139,7 @@ sudo ss -tulpn | grep :80
 curl localhost
 ### External Web Test
 The website was accessed through the VM's public IP address using HTTP.
+
 
 ## 📚 What I Learned
 ### Azure
@@ -164,6 +171,7 @@ Documenting infrastructure
 Using Git for version control
 Keeping development work organized locally before pushing to GitHub
 
+
 ## 📂 Project Structure
 ```
 V1-Secure-Linux-Web-Server/
@@ -187,6 +195,7 @@ V1-Secure-Linux-Web-Server/
 └── README.md
 ```
 
+
 ## 🧠 Engineering Takeaway
 
 This project establishes the foundation for the larger Azure Enterprise Infrastructure project.
@@ -209,6 +218,7 @@ Cloud Infrastructure
 ```
 Future versions build on these foundations by introducing stronger identity management, least-privilege access, infrastructure as code, security monitoring, automation, and enterprise architecture.
 
+
 ## 🚀 Project Evolution
 
 This project is the first stage of a larger evolving Azure infrastructure project.
@@ -222,6 +232,7 @@ V5	            Enterprise Cloud Architecture
 
 Each version is designed as an independent implementation so that the infrastructure can be deployed, tested, documented, and evaluated without requiring the previous Azure environment to remain running.
 
+
 ### ⚠️ Project Status
 
 ### Completed ✅
@@ -229,6 +240,7 @@ Each version is designed as an independent implementation so that the infrastruc
 The V1 environment was successfully deployed, tested, documented, and used to host the portfolio website.
 
 The Azure resources can be removed after testing to avoid unnecessary cloud costs while the project documentation and GitHub repository remain as the permanent record of the implementation.
+
 
 ## 👨‍💻 Author
 
