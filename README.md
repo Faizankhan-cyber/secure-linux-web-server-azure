@@ -256,9 +256,3 @@ This project is part of my hands-on journey into:
 🌐 Networking
 ⚙️ Infrastructure Engineering
 
-
-### One small improvement I deliberately made
-
-I **didn't claim V1 is an "enterprise-grade secure architecture."** That would be résumé-flavored fiction. The actual project is a solid **foundation-level secure Linux web server**, and the repository itself documents that exact scope. :contentReference[oaicite:1]{index=1}
-
-The README also clearly positions V1 as the foundation for the later versions, which makes the repository's evolution much easier for a recruiter to understand.
