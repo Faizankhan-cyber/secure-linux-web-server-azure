@@ -1,35 +1,29 @@
-# Secure Linux Web Server on Azure ☁️🔐
+# Secure Linux Web Server on Azure
 
- **⚠️ Important: Project Structure Update**
+**Repository:** https://github.com/Faizankhan-cyber/secure-linux-web-server-azure
 
-> This project was originally maintained as part of a combined Azure Enterprise Infrastructure repository containing both the Secure Linux Web Server project and the Identity & Access Security project. These projects have since been separated into independent repositories, each with its own documentation and learning objectives. Some resource names, folder names, and historical screenshots may still use the original V1/V2 labels because they were created before the separation. These labels are retained for historical accuracy and do not mean the projects are still combined.
+**Related project:** [Microsoft Entra ID & Azure RBAC](https://github.com/Faizankhan-cyber/microsoft-entra-id-azure-rbac-standalone)
 
 
-A hands-on Microsoft Azure project focused on learning core cloud infrastructure concepts through the deployment of a secure Linux-based web server.
+> **Project structure update:** This project was originally part of a combined Azure Enterprise Infrastructure repository that also included an Identity & Access Security project. The projects are now maintained in separate repositories, with their own documentation and learning objectives. Some resource names, folder names, and historical screenshots may retain the original V1/V2 labels; these are historical and do not indicate that the projects remain combined.
 
-This project demonstrates fundamental cloud networking, Azure Virtual Machines, Linux administration, Network Security Groups (NSGs), SSH key authentication, and Nginx web hosting.
+A hands-on Microsoft Azure learning project focused on deploying a secure Linux-based web server. It demonstrates cloud networking, Azure Virtual Machines, Linux administration, Network Security Groups (NSGs), SSH key authentication, and Nginx web hosting.
 
-It was developed as a practical learning project for **Microsoft Azure Fundamentals (AZ-900)**.
+I built this project after completing the Microsoft AZ-900 exam to apply Azure fundamentals through a practical Linux web-server deployment.
 
----
+## Project Objective
 
-## 🎯 Project Objective
+Deploy a Linux virtual machine on Microsoft Azure and use it to host a static portfolio website. The implementation covered:
 
-The objective was to deploy a Linux virtual machine on Microsoft Azure and use it to host a static portfolio website.
-
-The implementation covered:
-
-- Organizing cloud resources with an Azure Resource Group
+- Organizing resources with an Azure Resource Group
 - Configuring an Azure Virtual Network and subnet
 - Controlling inbound traffic with a Network Security Group
 - Deploying an Ubuntu 24.04 LTS virtual machine
 - Configuring SSH key-based authentication
-- Installing and running the Nginx web server
+- Installing and running Nginx
 - Hosting a static portfolio website accessible over HTTP
 
----
-
-## 🏗️ Architecture
+## Architecture
 
 ```text
                          Internet
@@ -59,25 +53,7 @@ The implementation covered:
                   Static Portfolio Website
 ```
 
-### Request Flow
-
-```text
-Internet
-   ↓
-Public IP Address
-   ↓
-Network Security Group
-   ↓
-Ubuntu Virtual Machine
-   ↓
-Nginx Web Server
-   ↓
-Portfolio Website
-```
-
----
-
-## ☁️ Azure Resources
+## Azure Resources
 
 | Resource | Purpose |
 |---|---|
@@ -89,42 +65,32 @@ Portfolio Website
 | Ubuntu Virtual Machine | Hosts the Linux web server |
 | Nginx | Serves the static portfolio website |
 
----
-
-## 🔐 Security Configuration
+## Security Configuration
 
 Security was considered at the network and authentication layers.
 
 ### SSH Key-Based Authentication
 
-The virtual machine was configured to use an SSH key pair for administrative access instead of password-based SSH authentication.
-
-This reduces reliance on password-based remote access. SSH private keys must be stored securely and must not be committed to the repository.
+The virtual machine was configured to use an SSH key pair for administrative access instead of password-based SSH authentication. This reduces reliance on password-based remote access. Store SSH private keys securely and do not commit them to the repository.
 
 ### Network Security Group
 
-The NSG was configured to allow the inbound traffic required by the workload.
+The NSG was configured to allow inbound traffic required by the workload.
 
 | Port | Protocol | Purpose |
 |---:|---|---|
 | 22 | TCP | SSH administration |
 | 80 | TCP | HTTP web traffic |
 
-**Security note:** The SSH rule should be restricted to trusted source IP addresses wherever possible. The actual deployed rule should be checked against the project's deployment notes and screenshots before claiming a specific source restriction.
+**Security note:** Restrict the SSH rule to trusted source IP addresses wherever possible. Check the project's deployment notes and screenshots before claiming a specific source restriction for the deployed rule.
 
 ### Network Isolation
 
-The virtual machine was deployed inside an Azure Virtual Network and subnet. The NSG provided an additional layer of network traffic control.
+The virtual machine was deployed inside an Azure Virtual Network and subnet, with the NSG providing an additional layer of network traffic control. This project demonstrates foundational cloud security practices; it is a learning environment, not a complete production-grade security architecture.
 
-This project demonstrates foundational cloud security practices. It is a learning environment, not a complete production-grade security architecture.
+## Web Server Deployment
 
----
-
-## 🌐 Web Server Deployment
-
-Nginx was installed and configured on the Ubuntu virtual machine to serve the portfolio website.
-
-The deployment process included:
+Nginx was installed and configured on the Ubuntu virtual machine to serve the portfolio website. The deployment process included:
 
 1. Updating the Ubuntu package repository.
 2. Installing Nginx.
@@ -140,39 +106,33 @@ The website was served from:
 /var/www/html/index.html
 ```
 
----
+## Validation and Testing
 
-## 🧪 Validation and Testing
+The deployment was validated with Linux commands and browser-based testing.
 
-The deployment was validated using Linux commands and browser-based testing.
-
-### 1. Check the Nginx Service
+### Check the Nginx Service
 
 ```bash
 sudo systemctl status nginx
 ```
 
-### 2. Verify Port 80
+### Verify Port 80
 
 ```bash
 sudo ss -tulpn | grep :80
 ```
 
-### 3. Test the Web Server Locally
+### Test the Web Server Locally
 
 ```bash
 curl localhost
 ```
 
-### 4. Test External Connectivity
+### Test External Connectivity
 
-The website was accessed through the virtual machine's public IP address over HTTP.
+The website was accessed over HTTP through the virtual machine's public IP address. These checks helped verify the service status, local response, and external accessibility.
 
-These checks helped verify the web server's service status, local response, and external accessibility.
-
----
-
-## 📚 What I Learned
+## What I Learned
 
 ### Microsoft Azure
 
@@ -202,7 +162,7 @@ These checks helped verify the web server's service status, local response, and 
 
 - Installing and managing Nginx
 - Serving static websites
-- Understanding the `/var/www/html` directory
+- The `/var/www/html` directory
 - Testing web server connectivity
 
 ### Git and GitHub
@@ -212,9 +172,9 @@ These checks helped verify the web server's service status, local response, and 
 - Using Git for version control
 - Organizing project files and technical evidence
 
----
+## Project Structure
 
-## 📂 Project Structure
+The intended repository layout is:
 
 ```text
 secure-linux-web-server-azure/
@@ -238,13 +198,9 @@ secure-linux-web-server-azure/
 └── README.md
 ```
 
-*The structure above reflects the intended repository layout. Verify the actual directory and file names in GitHub before publishing this section.*
+## Engineering Takeaway
 
----
-
-## 🧠 Engineering Takeaway
-
-A cloud-hosted website is more than a virtual machine running a web server. It depends on several connected infrastructure layers:
+A cloud-hosted website depends on several connected infrastructure layers:
 
 ```text
 Application
@@ -262,44 +218,35 @@ Security Controls
 Cloud Infrastructure
 ```
 
-Building this project helped me understand how these components work together to deliver a publicly accessible workload on Microsoft Azure.
+Building this project provided practical experience with how these components work together to deliver a publicly accessible workload on Microsoft Azure, as well as with cloud resource organization, network configuration, Linux administration, remote access, and basic security controls.
 
-It also provided practical experience with cloud resource organization, network configuration, Linux administration, remote access, and basic security controls.
+## Project Purpose
 
----
-
-## 🎓 Project Purpose
-
-This repository is maintained as a **standalone AZ-900 learning project**.
-
-It is separate from the Microsoft Entra ID and Azure RBAC project, which focuses on identity and access management concepts relevant to SC-900.
+This repository is maintained as a **standalone AZ-900 learning project**. It is separate from the Microsoft Entra ID and Azure RBAC project, which focuses on identity and access management concepts relevant to SC-900.
 
 A future Azure Enterprise Infrastructure project may build on these foundational skills, but it will have its own repository, architecture, and cumulative implementation history.
 
----
-
-## ⚠️ Project Status
+## Project Status
 
 **Status: Completed and documented**
 
-The Azure environment was deployed, tested, and used to host the portfolio website.
+The Azure environment was deployed, tested, and used to host the portfolio website. Azure resources may be deleted after testing to avoid unnecessary cloud charges. The source code, documentation, architecture files, and screenshots remain in the repository as a record of the implementation.
 
-The Azure resources may be deleted after testing to avoid unnecessary cloud charges. The source code, documentation, architecture files, and screenshots remain in the repository as a record of the implementation.
+**Note:** The website may no longer be publicly accessible if the VM and its associated resources have been deleted.
 
-**Important:** The website may not remain publicly accessible if the VM and its associated resources have been deleted.
+## Author
 
----
-
-## 👨‍💻 Author
-
-**Faizan Khan Khaleel**
-
+**Faizan Khan Khaleel**  
 BCA | Cloud Architecture & Cybersecurity
 
 Areas explored through this project:
 
-- ☁️ Cloud Engineering
-- 🔐 Cybersecurity Fundamentals
-- 🐧 Linux Administration
-- 🌐 Computer Networking
-- ⚙️ Infrastructure Engineering
+- Cloud engineering
+- Cybersecurity fundamentals
+- Linux administration
+- Computer networking
+- Infrastructure engineering
+
+## License
+
+No license is currently specified in this repository. Until a license is added, do not assume the source is licensed for reuse.
